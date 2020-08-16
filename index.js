@@ -4,6 +4,10 @@ const outputFile = "new_CDR4Test.ACT";
 const fs = require("fs");
 const readline = require("readline");
 
+const cdrFiles = require("./detector");
+
+cdrFiles();
+
 const lineReader = readline.createInterface({
   input: fs.createReadStream(inputFile),
 });

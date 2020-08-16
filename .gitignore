@@ -1,3 +1,6 @@
+# customer data
+*.ACT
+
 # Logs
 logs
 *.log
