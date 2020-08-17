@@ -1,11 +1,12 @@
 //const inputFile = "CDR4Test.ACT";
-const outputFile = "new_CDR4Test.ACT";
+//const outputFile = "new_CDR4Test.ACT";
 
 const fs = require("fs");
 const readline = require("readline");
 
 const processing = (doneFlag, inputFile) => {
   if (!doneFlag) {
+    let outputFile = "new_" + inputFile;
     const lineReader = readline.createInterface({
       input: fs.createReadStream(inputFile),
     });

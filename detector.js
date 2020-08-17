@@ -16,6 +16,6 @@ module.exports = cdrScanning = () => {
       }
     }
   });
-  console.log("detector.js done");
+  console.log(cdrList);
   return cdrList;
 };

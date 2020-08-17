@@ -7,4 +7,4 @@ const main = async () => {
   cdrNewFiles = await cdrProcessing(cdrFileList);
 };
 
-main();
+let running = setInterval(main, 5000);
