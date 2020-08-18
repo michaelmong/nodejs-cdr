@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const logger = require("./logger");
 
 const directoryPath = path.join(__dirname, "");
 

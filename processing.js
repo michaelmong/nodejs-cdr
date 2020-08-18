@@ -1,5 +1,6 @@
 const fs = require("fs");
 const readline = require("readline");
+const logger = require("./logger");
 
 const processing = (doneFlag, inputFile) => {
   if (!doneFlag) {

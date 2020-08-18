@@ -1,6 +1,9 @@
 # customer data
 *.ACT
 
+# Program Log
+log/
+
 # Logs
 logs
 *.log

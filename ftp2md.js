@@ -1,5 +1,6 @@
 const ftp = require("basic-ftp");
 const fs = require("fs");
+const logger = require("./logger");
 
 const ftp2md = async (doneFlag, inputFile) => {
   if (!doneFlag) {
@@ -24,7 +25,7 @@ const ftp2md = async (doneFlag, inputFile) => {
       console.log(await client.list());
       await client.uploadFrom("new_" + inputFile, "new_" + inputFile);
     } catch (err) {
-      console.log(err);
+      logger("error", err);
     }
     client.close();
   }
