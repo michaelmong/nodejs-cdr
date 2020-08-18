@@ -9,7 +9,9 @@ const processing = (doneFlag, inputFile) => {
       input: fs.createReadStream(inputFile),
     });
 
-    console.log("Start reading " + inputFile + "...");
+    //log action with level=debug
+    let msg = "[processing.js] Start reading " + inputFile + "...";
+    logger("debug", msg);
 
     let lineNo = 0;
     let dataToNewFile = "";
@@ -33,20 +35,26 @@ const processing = (doneFlag, inputFile) => {
     });
 
     lineReader.on("close", () => {
-      console.log("Reading " + inputFile + " completed.");
+      //log action with level=debug
+      let msg = "[processing.js] Reading " + inputFile + "finished";
+      logger("debug", msg);
 
       fs.writeFile(outputFile, dataToNewFile, (err) => {
         if (err) {
+          //log error with level=error
+          let msg = "[processing.js] Error writing " + outputFile + ": " + err;
+          logger("error", msg);
+
           return console.log(err);
         }
-        console.log(outputFile, "has been saved.");
+        //log action with level=debug
+        let msg = "[processing.js] Writing " + outputFile + "success";
+        logger("debug", msg);
       });
     });
   }
 };
 
 module.exports = cdrProcessing = (inputFilesList) => {
-  console.log(inputFilesList);
-
   inputFilesList.forEach(processing);
 };

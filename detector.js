@@ -17,6 +17,15 @@ module.exports = cdrScanning = () => {
       }
     }
   });
-  console.log(cdrList);
+
+  //log filename with level=info
+  cdrList.forEach((exist, filename) => {
+    let msg =
+      "[detector.js] { Map:" +
+      filename +
+      (exist ? "...done }" : "...queued to process }");
+    logger("info", msg);
+  });
+
   return cdrList;
 };
