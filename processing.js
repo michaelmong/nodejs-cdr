@@ -2,9 +2,20 @@ const fs = require("fs");
 const readline = require("readline");
 const logger = require("./logger");
 
+//log action with level=debug
+let msg = "[processing.js] Reading config.json...";
+logger("debug", msg);
+
+const readConfig = require("./config");
+const CONFIG = readConfig();
+
+//log action with level=debug
+msg = "[processing.js] Reading config.json...done";
+logger("debug", msg);
+
 const processing = (doneFlag, inputFile) => {
   if (!doneFlag) {
-    let outputFile = "new_" + inputFile;
+    let outputFile = CONFIG.outputFile.prefix + inputFile;
     const lineReader = readline.createInterface({
       input: fs.createReadStream(inputFile),
     });
@@ -36,7 +47,12 @@ const processing = (doneFlag, inputFile) => {
 
     lineReader.on("close", () => {
       //log action with level=debug
-      let msg = "[processing.js] Reading " + inputFile + "finished";
+      let msg =
+        "[processing.js] Reading " +
+        lineNo +
+        " lines of " +
+        inputFile +
+        " finished";
       logger("debug", msg);
 
       fs.writeFile(outputFile, dataToNewFile, (err) => {
@@ -48,7 +64,7 @@ const processing = (doneFlag, inputFile) => {
           return console.log(err);
         }
         //log action with level=debug
-        let msg = "[processing.js] Writing " + outputFile + "success";
+        let msg = "[processing.js] Writing " + outputFile + " success";
         logger("debug", msg);
       });
     });

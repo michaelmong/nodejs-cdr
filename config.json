@@ -1,0 +1,24 @@
+{
+  "inputFile": {
+    "ext": ".ACT",
+    "path": ""
+  },
+
+  "outputFile": {
+    "prefix": "new_",
+    "path": ""
+  },
+
+  "logFile": {
+    "path": "log"
+  },
+
+  "ftp": {
+    "host": "localhost",
+    "user": "cdr",
+    "password": "cdr",
+    "path": ""
+  },
+
+  "interval": "5000"
+}
